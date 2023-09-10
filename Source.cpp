@@ -213,75 +213,68 @@ int main() {      //הפעלת הפונקציות שבנינו על המחרוזות שהתבקשנו לבדוק והוצאת פלט
     }
 
 
-    std::cout << std::endl << std::endl << " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Question 2 - Part Two ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ " << std::endl << std::endl;
+    std::cout << std::endl << " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Question 2 - Part Two ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ " << std::endl << std::endl;
 
 
 
 
+    std::cout << " $~~  First string check  ~~$ " << std::endl;
+    std::cout << " LinkedList: ";
+    List2.display();
+   
     bool answer1b = List1.is_palindrome();              // בדיקה של הרשימה מקושרת הראשונה, האם הוא מסוג פולינדרום
     if (answer1b)
     {
-        std::cout << " $~~  First string check  ~~$ " << std::endl;
-        std::cout << " LinkedList: ";
-        List1.display();
-        std::cout << " This is a palindrome!" << std::endl << std::endl << std::endl;
+        std::cout << " This is a palindrome!" << std::endl << std::endl;
     }
     else
     {
-        std::cout << " $~~  First string check  ~~$ " << std::endl;
-        std::cout << " LinkedList: ";
-        List1.display();
-        std::cout << " This is not a palindrome " << std::endl << std::endl << std::endl;
+        std::cout << " This is not a palindrome " << std::endl << std::endl;
     }   
 
+
+    std::cout << " $~~  Second string check  ~~$ " << std::endl;
+    std::cout << " LinkedList: ";
+    List2.display();
 
     bool answer2b = List2.is_palindrome();              // בדיקה של הרשימה מקושרת השניה, האם הוא מסוג פולינדרום 
     if (answer2b)
     {
-        std::cout << " $~~  Second string check  ~~$ " << std::endl;
-        std::cout << " LinkedList: ";
-        List2.display();
-        std::cout << " This is a palindrome!" << std::endl << std::endl << std::endl;
+        
+        std::cout << " This is a palindrome!" << std::endl << std::endl;
     }
     else
     {
-        std::cout << " $~~  Second string check  ~~$ " << std::endl;
-        std::cout << " LinkedList: ";
-        List2.display();
-        std::cout << " This is not a palindrome " << std::endl << std::endl << std::endl;
+        std::cout << " This is not a palindrome " << std::endl << std::endl;
     }
 
+
+    std::cout << " $~~  Third string check  ~~$ " << std::endl;
+    std::cout << " LinkedList: ";
+    List3.display();
 
     bool answer3b = List3.is_palindrome();              // בדיקה של הרשימה מקושרת השלישית, האם הוא מסוג פולינדרום
     if (answer3b)
     {
-        std::cout << " $~~  Third string check  ~~$ " << std::endl;
-        std::cout << " LinkedList: ";
-        List3.display();
-        std::cout << " This is a palindrome!" << std::endl << std::endl << std::endl;
+        std::cout << " This is a palindrome!" << std::endl << std::endl;
     }
     else
     {
-        std::cout << " $~~  Third string check  ~~$ " << std::endl;
-        std::cout << " LinkedList: ";
-        List3.display();
-        std::cout << " This is not a palindrome " << std::endl << std::endl << std::endl;
+        std::cout << " This is not a palindrome " << std::endl << std::endl;
     }
 
+
+    std::cout << " $~~  Fourth string check  ~~$ " << std::endl;
+    std::cout << " LinkedList: ";
+    List4.display();
 
     bool answer4b = List4.is_palindrome();              // בדיקה של הרשימה מקושרת הרביעית, האם הוא מסוג פולינדרום
     if (answer4b)
     {
-        std::cout << " $~~  Fourth string check  ~~$ " << std::endl;
-        std::cout << " LinkedList: ";
-        List4.display();
-        std::cout << " This is a palindrome!" << std::endl << std::endl << std::endl;
+        std::cout << " This is a palindrome!" << std::endl << std::endl;
     }
     else
     {
-        std::cout << " $~~  Fourth string check  ~~$ " << std::endl;
-        std::cout << " LinkedList: ";
-        List4.display();
         std::cout << " This is not a palindrome " << std::endl << std::endl;
     }
 
