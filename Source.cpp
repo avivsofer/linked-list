@@ -35,13 +35,14 @@ public:
     void display() {
         Node* current = head;
         while (current) {
-            std::cout << current->data << " ";
+            std::cout << current->data;
             current = current->next;
         }
         std::cout << std::endl;
     }
 
-    bool is_ww(LinkedList l) {
+
+    bool is_ww(LinkedList l) { //פונקציה לבדירה האם זה ww
         Node* fast = l.head;
         Node* slow = l.head;
 
@@ -109,179 +110,119 @@ public:
 };
 
 
-int main() {
-    LinkedList myList1;
-    LinkedList myList2;
-    LinkedList myList3;
-    LinkedList myList4;
-    LinkedList myList5;
+int main() {      //הפעלת הפונקציות שבנינו על המחרוזות שהתבקשנו לבדוק והוצאת פלט בהתאם לתוצאה
 
-    myList1.append('a');
-    myList1.append('b');
-    myList1.append('a');
-    myList1.append('b');
-    myList1.append('a');
-    myList1.append('a');
-    myList1.append('b');
-    myList1.append('a');
-    myList1.append('b');
-    myList1.append('b');
-    myList1.append('a');
-    myList1.append('b');
-    myList1.append('a');
-    myList1.append('b');
-    myList1.append('a');
-    myList1.append('a');
-    myList1.append('a');
-    myList1.append('a');
-    myList1.append('b');
-    myList1.append('a');
-    myList1.append('b');
-    myList1.append('b');
+    std::string str1 = "ababaababbababaaaababb";
+    std::string str2 = "abbabbabbaaaaabbabbabba";
+    std::string str3 = "baabaaabbabbabbaabaaabbabbab";
+    std::string str4 = "abbabbaabbabba";
 
-    myList2.append('a');
-    myList2.append('b');
-    myList2.append('b');
-    myList2.append('a');
-    myList2.append('b');
-    myList2.append('b');
-    myList2.append('a');
-    myList2.append('b');
-    myList2.append('b');
-    myList2.append('a');
-    myList2.append('a');
-    myList2.append('a');
-    myList2.append('a');
-    myList2.append('a');
-    myList2.append('b');
-    myList2.append('b');
-    myList2.append('a');
-    myList2.append('b');
-    myList2.append('b');
-    myList2.append('a');
-    myList2.append('b');
-    myList2.append('b');
-    myList2.append('a');
+    LinkedList List1;
+    for (char c : str1) {
+        List1.append(c);
+    }
 
-    myList3.append('b');
-    myList3.append('a');
-    myList3.append('a');
-    myList3.append('b');
-    myList3.append('a');
-    myList3.append('a');
-    myList3.append('a');
-    myList3.append('b');
-    myList3.append('b');
-    myList3.append('a');
-    myList3.append('b');
-    myList3.append('b');
-    myList3.append('a');
-    myList3.append('b');
-    myList3.append('b');
-    myList3.append('a');
-    myList3.append('a');
-    myList3.append('b');
-    myList3.append('a');
-    myList3.append('a');
-    myList3.append('a');
-    myList3.append('b');
-    myList3.append('b');
-    myList3.append('a');
-    myList3.append('b');
-    myList3.append('b');
-    myList3.append('a');
-    myList3.append('b');
+    LinkedList List2;
+    for (char c : str2) {
+        List2.append(c);
+    }
 
-    myList4.append('a');
-    myList4.append('b');
-    myList4.append('b');
-    myList4.append('a');
-    myList4.append('b');
-    myList4.append('b');
-    myList4.append('a');
-    myList4.append('a');
-    myList4.append('b');
-    myList4.append('b');
-    myList4.append('a');
-    myList4.append('b');
-    myList4.append('b');
-    myList4.append('a');
+    LinkedList List3;
+    for (char c : str3) {
+        List3.append(c);
+    }
+
+    LinkedList List4;
+    for (char c : str4) {
+        List4.append(c);
+    }
 
 
 
-    bool answer1 = myList1.is_ww(myList1);              // chcking first LinkedList
+
+    std::cout << std::endl << std::endl << " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Question 1 - Part one ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ " << std::endl << std::endl;
+
+
+
+    bool answer1 = List1.is_ww(List1);              // chcking first LinkedList
     if (answer1)
     {
-        std::cout << "The LinkedList:";
-        myList1.display();
-        std::cout << "is a WW list" << std::endl << std::endl;
+        std::cout << " The LinkedList:";
+        List1.display();
+        std::cout << " This is a WW type linked list" << std::endl << std::endl;
     }
     else
         std::cout << " The first LinkedList is not a WW list" << std::endl << std::endl;
 
-    bool answer2 = myList2.is_ww(myList2);              // chcking second LinkedList 
+    bool answer2 = List2.is_ww(List2);              // chcking second LinkedList 
     if (answer2)
     {
-        std::cout << "The LinkedList:";
-        myList2.display();
-        std::cout << "is a WW list" << std::endl << std::endl;
+        std::cout << " The LinkedList:";
+        List2.display();
+        std::cout << " This is a WW type linked list" << std::endl << std::endl;
     }
     else
         std::cout << " The second LinkedList is not a WW list" << std::endl << std::endl;
 
-    bool answer3 = myList3.is_ww(myList3);              // chcking third LinkedList
+    bool answer3 = List3.is_ww(List3);              // chcking third LinkedList
     if (answer3)
     {
-        std::cout << "The LinkedList:";
-        myList3.display();
-        std::cout << "is a WW list" << std::endl << std::endl;
+        std::cout << " The LinkedList:";
+        List3.display();
+        std::cout << " This is a WW type linked list" << std::endl << std::endl;
     }
     else
         std::cout << " The third LinkedList is not a WW list" << std::endl << std::endl;
 
-    bool answer4 = myList4.is_ww(myList4);              // chcking forth LinkedList
+    bool answer4 = List4.is_ww(List4);              // chcking forth LinkedList
     if (answer4)
     {
-        std::cout << "The LinkedList:";
-        myList4.display();
-        std::cout << "is a WW list" << std::endl << std::endl;
+        std::cout << " The LinkedList:";
+        List4.display();
+        std::cout << " This is a WW type linked list" << std::endl << std::endl;
     }
     else
-        std::cout << " The forth LinkedList is not a WW list" << std::endl << std::endl;
+        std::cout << " The fourth linked list tested is not of type WW" << std::endl << std::endl;
 
-    std::cout << std::endl << std::endl << "--------------------------------------second part--------------------------------------" << std::endl << std::endl;
 
-    bool answer1b = myList1.is_palindrome();              // chcking first LinkedList
+
+
+    std::cout << std::endl << std::endl << " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Question 2 - Part Two ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ " << std::endl << std::endl;
+
+
+
+
+    bool answer1b = List1.is_palindrome();              // בדיקה של הרשימה מקושרת הראשונה, האם הוא מסוג פולינדרום
     if (answer1b)
     {
-        std::cout << "The first LinkedList is a palindrome!!!" << std::endl << std::endl << std::endl;
+        std::cout << " The first LinkedList is a palindrome!!!" << std::endl << std::endl << std::endl;
     }
     else
-        std::cout << " The first LinkedList is not a palindrome :(" << std::endl << std::endl << std::endl;
+        std::cout << " The first LinkedList is not a palindrome " << std::endl << std::endl << std::endl;
 
-    bool answer2b = myList2.is_palindrome();              // chcking second LinkedList 
+    bool answer2b = List2.is_palindrome();              // בדיקה של הרשימה מקושרת השניה, האם הוא מסוג פולינדרום 
     if (answer2b)
     {
-        std::cout << "The second LinkedList is a polindrom!!!" << std::endl << std::endl << std::endl;
+        std::cout << " The second LinkedList is a polindrom!!!" << std::endl << std::endl << std::endl;
     }
     else
-        std::cout << " The second LinkedList is not a palindrome :(" << std::endl << std::endl << std::endl;
+        std::cout << " The second LinkedList is not a palindrome " << std::endl << std::endl << std::endl;
 
-    bool answer3b = myList3.is_palindrome();              // chcking third LinkedList
+    bool answer3b = List3.is_palindrome();              // בדיקה של הרשימה מקושרת השלישית, האם הוא מסוג פולינדרום
     if (answer3b)
     {
-        std::cout << "The third LinkedList is a palindrome!!!" << std::endl << std::endl << std::endl;
+        std::cout << " The third LinkedList is a palindrome!!!" << std::endl << std::endl << std::endl;
     }
     else
-        std::cout << " The third LinkedList is not a palindrome :(" << std::endl << std::endl << std::endl;
+        std::cout << " The third LinkedList is not a palindrome " << std::endl << std::endl << std::endl;
 
-    bool answer4b = myList4.is_palindrome();              // chcking forth LinkedList
+    bool answer4b = List4.is_palindrome();              // בדיקה של הרשימה מקושרת הרביעית, האם הוא מסוג פולינדרום
     if (answer4b)
     {
-        std::cout << "The forth LinkedList is a palindrome!!!" << std::endl << std::endl << std::endl;
+        std::cout << " The forth LinkedList is a palindrome!!!" << std::endl << std::endl << std::endl;
     }
     else
-        std::cout << " The forth LinkedList is not a palindrome :(" << std::endl << std::endl;
+        std::cout << " The forth LinkedList is not a palindrome " << std::endl << std::endl;
 
     return 0;
 }
