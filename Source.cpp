@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <iostream>
 
-class Node {
+class Node { //יצירת צומת ברשימה
 public:
     char data;
     Node* next;
@@ -108,49 +108,6 @@ public:
 
 };
 
-//
-//    bool is_palindrome() {
-//        Node* fast = this->head;
-//        Node* slow = this->head;
-//        Node* p = nullptr;
-//        Node* changer = new Node('a');
-//        bool OddFlag = false;
-//
-//
-//        while (fast->next != nullptr)
-//        {
-//            p = slow;
-//            slow = slow->next;
-//            p->next = changer;
-//            changer = p;
-//
-//            fast = fast->next;
-//            if (fast->next == nullptr)
-//                break;
-//
-//
-//            fast = fast->next;
-//            if (fast->next == nullptr)    // The LinkedList is odd
-//                OddFlag = true;
-//        }  
-//
-//        // now slow is pointing to the middle, and the first half is connected upside down
-//
-//        p = p->next;
-//        if (OddFlag)
-//           slow = slow->next;
-//            
-//        while (slow->next != nullptr)
-//        {
-//            if (p->data != slow->data)
-//                return false;
-//            p = p->next;
-//            slow = slow->next;
-//        }
-//        return true;
-//    }
-//
-//};
 
 int main() {
     LinkedList myList1;
