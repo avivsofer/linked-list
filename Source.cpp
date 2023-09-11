@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <iostream>
 
-class Node { //יצירת צומת ברשימה
+class Node { // Define the list nodes
 public:
     char data;
     Node* next;
@@ -13,6 +13,36 @@ public:
 class LinkedList {
 private:
     Node* head;
+    bool isOddList = false;
+
+    Node* reverse_the_LinkedList(Node* current_pointer) {
+        Node* prev = nullptr;
+        Node* current = current_pointer;
+        Node* next;
+
+        while (current) {
+            next = current->next;
+            current->next = prev;
+            prev = current;
+            current = next;
+        }
+
+        return prev;
+    }
+
+    Node* find_the_middle() {
+        Node* slow = head;
+        Node* fast = head;
+
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        if (fast && !fast->next) {
+            isOddList = true;
+        }
+        return slow;
+    }
 
 public:
     LinkedList() : head(nullptr) {}
@@ -31,9 +61,8 @@ public:
             current->next = newNode;
         }
     }
-
-
-    void display() { 
+    // Print the list
+    void print_list() { 
         Node* current = head;
         while (current) {
             std::cout << current->data;
@@ -42,78 +71,48 @@ public:
         std::cout << std::endl;
     }
 
+    // Check if the list is ww
+    bool is_ww(LinkedList l) { 
+        Node* start = l.head;
+        Node* middle = find_the_middle();
 
+        if (isOddList)
+            return false;
 
-    bool is_ww(LinkedList l) { //פונקציה לבדיקה האם זה ww
-        Node* fast = l.head;
-        Node* slow = l.head;
-
-
-        while (fast->next != nullptr)
+        while (middle->next != nullptr)
         {
-            slow = slow->next;
-            fast = fast->next;
-            if (fast->next == nullptr)
-                break;
-
-
-            fast = fast->next;
-            if (fast->next == nullptr)    // The LinkedList is odd
+            if (start->data != middle->data)
                 return false;
-        }
 
-        fast = l.head;
-        while (slow->next != nullptr)
-        {
-            if (fast->data != slow->data)
-                return false;
-            fast = fast->next;
-            slow = slow->next;
+            start = start->next;
+            middle = middle->next;
         }
         return true;
     }
 
-
+    // Accepts a string and returns true or false whether it is a palindrome
     bool is_palindrome() {
-        Node* slow = head;
-        Node* fast = head;
+        Node* middle = find_the_middle();
 
-        while (fast && fast->next) {
-            slow = slow->next;
-            fast = fast->next->next;
-        }
+        Node* headHalf = head;
+        Node* endHalf = reverse_the_LinkedList(middle);
 
-        Node* prev = nullptr;
-        Node* current = slow;
-        Node* next;
-
-        while (current) {
-            next = current->next;
-            current->next = prev;
-            prev = current;
-            current = next;
-        }
-
-        Node* firstHalf = head;
-        Node* secondHalf = prev;
-
-        while (secondHalf) {
-            if (firstHalf->data != secondHalf->data) {
+        while (endHalf) {
+            if (headHalf->data != endHalf->data) {
                 return false;
             }
-            firstHalf = firstHalf->next;
-            secondHalf = secondHalf->next;
+            headHalf = headHalf->next;
+            endHalf = endHalf->next;
         }
 
         return true;
     }
-
-
 };
 
 
-int main() {      //הפעלת הפונקציות שבנינו על המחרוזות שהתבקשנו לבדוק והוצאת פלט בהתאם לתוצאה
+int main() {      
 
+    // Creating strings to test according to the assignment
     std::string str1 = "ababaababbababaaaababb";
     std::string str2 = "abbabbabbaaaaabbabbabba";
     std::string str3 = "baabaaabbabbabbaabaaabbabbab";
@@ -145,72 +144,72 @@ int main() {      //הפעלת הפונקציות שבנינו על המחרוזות שהתבקשנו לבדוק והוצאת פלט
     std::cout << std::endl << std::endl << " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Question 1 - Part one ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ " << std::endl << std::endl;
 
 
-
-    bool answer1 = List1.is_ww(List1);              // בדיקת מחרוזת ראשונה
+    // String type checking, WW type or not
+    bool answer1 = List1.is_ww(List1);              
     if (answer1)
     {
         std::cout << " $~~  First string check  ~~$ " << std::endl;
         std::cout << " LinkedList: ";
-        List1.display();
-        std::cout << " This is A WW type linked list" << std::endl << std::endl;
+        List1.print_list(); // Print of the string
+        std::cout << " This is A WW type linked list." << std::endl << std::endl;
     }
     else
     {
         std::cout << " $~~  First string check  ~~$ " << std::endl;
         std::cout << " LinkedList: ";
-        List1.display();
-        std::cout << " This is NOT a WW type linked list" << std::endl << std::endl;
+        List1.print_list(); // Print of the string
+        std::cout << " This is NOT a WW type linked list." << std::endl << std::endl;
     }
 
 
-    bool answer2 = List2.is_ww(List2);              // בדיקת מחרוזת שניה 
+    bool answer2 = List2.is_ww(List2);              
     if (answer2)
     {
         std::cout << " $~~  Second string check  ~~$ " << std::endl;
         std::cout << " LinkedList: ";
-        List2.display();
-        std::cout << " This is A WW type linked list" << std::endl << std::endl;
+        List2.print_list(); // Print of the string
+        std::cout << " This is A WW type linked list." << std::endl << std::endl;
     }
     else
     {
         std::cout << " $~~  Second string check  ~~$ " << std::endl;
         std::cout << " LinkedList: ";
-        List2.display();
-        std::cout << " This is NOT a WW type linked list" << std::endl << std::endl;
+        List2.print_list(); // Print of the string
+        std::cout << " This is NOT a WW type linked list." << std::endl << std::endl;
     }
 
 
-    bool answer3 = List3.is_ww(List3);              // בדיקת מחרוזת שלישית
+    bool answer3 = List3.is_ww(List3);              
     if (answer3)
     {
         std::cout << " $~~  Third string check  ~~$ " << std::endl;
         std::cout << " LinkedList: ";
-        List3.display();
-        std::cout << " This is A WW type linked list" << std::endl << std::endl;
+        List3.print_list(); // Print of the string
+        std::cout << " This is A WW type linked list." << std::endl << std::endl;
     }
     else
     {
         std::cout << " $~~  Third string check  ~~$ " << std::endl;
         std::cout << " LinkedList: ";
-        List3.display();
-        std::cout << " This is NOT a WW type linked list" << std::endl << std::endl;
+        List3.print_list(); // Print of the string
+        std::cout << " This is NOT a WW type linked list." << std::endl << std::endl;
     }
 
 
-    bool answer4 = List4.is_ww(List4);              // בדיקת מחרוזת רביעית
+    bool answer4 = List4.is_ww(List4);              
     if (answer4)
     {
         std::cout << " $~~  Fourth string check  ~~$ " << std::endl;
         std::cout << " LinkedList: ";
-        List4.display();
-        std::cout << " This is A WW type linked list" << std::endl << std::endl;
+        List4.print_list(); // Print of the string
+        std::cout << " This is A WW type linked list." << std::endl << std::endl;
     }
     else
     {
         std::cout << " $~~  Fourth string check  ~~$ " << std::endl;
         std::cout << " LinkedList: ";
-        List4.display();
-        std::cout << " This is NOT a WW type linked list" << std::endl << std::endl;
+        List4.print_list(); // Print of the string
+        std::cout << " This is NOT a WW type linked list." << std::endl << std::endl;
     }
 
 
@@ -218,65 +217,65 @@ int main() {      //הפעלת הפונקציות שבנינו על המחרוזות שהתבקשנו לבדוק והוצאת פלט
 
 
 
-
+    // Checking the type of strings, of polyndrom type or not
     std::cout << " $~~  First string check  ~~$ " << std::endl;
     std::cout << " LinkedList: ";
-    List2.display();
-   
-    bool answer1b = List1.is_palindrome();              // בדיקה של הרשימה מקושרת הראשונה, האם הוא מסוג פולינדרום
+    List1.print_list(); // Preprint of the string
+
+    bool answer1b = List1.is_palindrome();              
     if (answer1b)
     {
         std::cout << " This is a palindrome!" << std::endl << std::endl;
     }
     else
     {
-        std::cout << " This is not a palindrome " << std::endl << std::endl;
-    }   
+        std::cout << " This is not a palindrome. " << std::endl << std::endl;
+    }
 
 
     std::cout << " $~~  Second string check  ~~$ " << std::endl;
     std::cout << " LinkedList: ";
-    List2.display();
+    List2.print_list(); // Preprint of the string
 
-    bool answer2b = List2.is_palindrome();              // בדיקה של הרשימה מקושרת השניה, האם הוא מסוג פולינדרום 
+    bool answer2b = List2.is_palindrome();           
     if (answer2b)
     {
-        
+
         std::cout << " This is a palindrome!" << std::endl << std::endl;
     }
     else
     {
-        std::cout << " This is not a palindrome " << std::endl << std::endl;
+        std::cout << " This is not a palindrome. " << std::endl << std::endl;
     }
 
 
     std::cout << " $~~  Third string check  ~~$ " << std::endl;
     std::cout << " LinkedList: ";
-    List3.display();
+    List3.print_list(); // Preprint of the string
 
-    bool answer3b = List3.is_palindrome();              // בדיקה של הרשימה מקושרת השלישית, האם הוא מסוג פולינדרום
+    bool answer3b = List3.is_palindrome();           
     if (answer3b)
     {
         std::cout << " This is a palindrome!" << std::endl << std::endl;
     }
     else
     {
-        std::cout << " This is not a palindrome " << std::endl << std::endl;
+        std::cout << " This is not a palindrome. " << std::endl << std::endl;
     }
 
 
     std::cout << " $~~  Fourth string check  ~~$ " << std::endl;
     std::cout << " LinkedList: ";
-    List4.display();
+    List4.print_list(); // Preprint of the string
 
-    bool answer4b = List4.is_palindrome();              // בדיקה של הרשימה מקושרת הרביעית, האם הוא מסוג פולינדרום
+    bool answer4b = List4.is_palindrome();            
     if (answer4b)
     {
         std::cout << " This is a palindrome!" << std::endl << std::endl;
     }
     else
     {
-        std::cout << " This is not a palindrome " << std::endl << std::endl;
+        std::cout << " This is not a palindrome. " << std::endl << std::endl;
     }
 
 
