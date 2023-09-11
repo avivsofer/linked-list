@@ -32,7 +32,8 @@ public:
         }
     }
 
-    void display() {
+
+    void display() { 
         Node* current = head;
         while (current) {
             std::cout << current->data;
@@ -43,7 +44,7 @@ public:
 
 
 
-    bool is_ww(LinkedList l) { //פונקציה לבדירה האם זה ww
+    bool is_ww(LinkedList l) { //פונקציה לבדיקה האם זה ww
         Node* fast = l.head;
         Node* slow = l.head;
 
